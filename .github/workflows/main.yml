@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v2
       - name: Lint by pre-commit
         run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
           uvx pre-commit run --all-files
   source-test:
     runs-on: ubuntu-latest
@@ -25,34 +25,30 @@ jobs:
         python-version: ['3.9', '3.10', '3.11', '3.12']
     steps:
       - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v2
       - uses: actions/setup-python@v5
         id: 'setup-python'
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Configure env
-        run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          uv sync --frozen --python='${{ steps.setup-python.outputs.python-path }}'
       - name: Run tests
         run: |
+          uv sync --frozen --python='${{ steps.setup-python.outputs.python-path }}'
           uv run pytest
   doc-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure env
-        run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          uv sync --frozen
+      - uses: astral-sh/setup-uv@v2
       - name: Run tests
         run: |
+          uv sync --frozen
           uv run make -C docs linkcheck dirhtml
   build-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v2
       - name: Build package
         run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
           uv build
           ls -l dist
