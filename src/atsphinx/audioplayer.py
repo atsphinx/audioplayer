@@ -20,13 +20,15 @@ class audio(nodes.image):  # noqa: D101
 class AudioDirective(SphinxDirective):  # noqa: D101
     required_arguments = 1
     option_spec = {
-        "controls": directives.flag,
+        "no-controls": directives.flag,
     }
 
     def run(self):  # noqa: D102
-        uri = directives.uri(self.arguments[0])
-        self.options["uri"] = uri
-        node = audio(**self.options)
+        attributes = {
+            "uri": directives.uri(self.arguments[0]),
+            "controls": self.options.get("no-controls", False),
+        }
+        node = audio(**attributes)
         return [
             node,
         ]

@@ -14,6 +14,7 @@ def test__directive(app: SphinxTestApp, status: StringIO, warning: StringIO):
     soup = BeautifulSoup((app.outdir / "index.html").read_text(), "html.parser")
     assert soup.audio
     assert soup.audio["src"] == "_images/dummy.mp3"
+    assert soup.audio["controls"]
 
 
 @pytest.mark.sphinx("html")
