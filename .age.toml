@@ -8,7 +8,7 @@ replace = "version = \"{{new_version}}\""
 
 
 [[files]]
-path = "src/atsphinx/audioplayer.py"
+path = "src/atsphinx/audioplayer/__init__.py"
 
 search = "version = \"{{current_version}}\""
 replace = "version = \"{{new_version}}\""
