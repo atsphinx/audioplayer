@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Kazuya Takei
+# This file is distributed under the same license as the
+# atsphinx-audioplayer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: atsphinx-audioplayer 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-16 19:22+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Kazuya Takei <myself@attakei.net>\n"
+"Language: ja\n"
+"Language-Team: Kazuya Takei <myself@attakei.net>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../index.rst:3
+msgid "atsphinx-audioplayer"
+msgstr ""
+
+#: ../../index.rst:6
+msgid "Overview"
+msgstr "概要"
+
+#: ../../index.rst:8
+msgid ""
+"This is Sphinx extension that renders html content for playing audio "
+"files. You can display your audio media contents with documentation by "
+"this."
+msgstr "このライブラリは、HTMLのオーディオ関連機能をサポートするためのSphinx拡張です。"
+"使用することで、あなたが管理するSphinxドキュメント上でオーディオファイルを再生できるようになります。"
+
+#: ../../index.rst:17
+msgid "Installation"
+msgstr "インストール"
+
+#: ../../index.rst:19
+msgid "Register this as dependencies."
+msgstr "依存ライブラリとして登録します。"
+
+#: ../../index.rst:25
+msgid "And, set as extension into your ``conf.py``."
+msgstr "``conf.py`` 上に、Sphinx拡張として登録します。"
+
+#: ../../index.rst:34
+msgid "Usage"
+msgstr "使用法"
+
+#: ../../index.rst:36
+msgid "You can write directive or role to insert audio control."
+msgstr "ディレクティブとロールの2種類の方法で、オーディオ再生のための記述ができます。"
+
+#: ../../index.rst:39
+msgid "Directive style"
+msgstr "ディレクティブの記述例"
+
+#: ../../index.rst:55
+msgid "Role style"
+msgstr "ロールの記述例"
+
+#: ../../index.rst:67
+msgid "You can insert audio element :audio:`description-for-role.mp3` in line."
+msgstr "ロールを使うことで、文中にオーディオ要素 :audio:`description-for-role.mp3` を挿入することができます。"
+
+#: ../../index.rst:70
+msgid "Configuration for extension"
+msgstr "Sphinx拡張としての設定"
+
+#: ../../index.rst:72
+msgid "Currently, this does not have configuration settings."
+msgstr "現在は、拡張全般に渡る設定項目がありません。"
+
+#: ../../index.rst:75
+msgid "Defined directives"
+msgstr "定義済みディレクティブ"
+
+#: ../../index.rst:82
+msgid ""
+"If this is set, write ``audio`` element excluded ``controls`` attribute. "
+"You can use for register audio element without user control interface."
+msgstr ""
+"このオプションを指定すると、出力時の ``audio`` 要素から ``controls`` 属性が除外されます。"
+"「要素自体は使用したいがユーザーに操作させない」ときに使用できます。"
+
