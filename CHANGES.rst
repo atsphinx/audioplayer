@@ -2,9 +2,14 @@
 Change logs
 ===========
 
-v0.0.0
+v0.1.0
 ======
 
-:date: 2024-09-16 (JST)
+:Date: 2024-09-16 (JST)
 
-Initial commit.
+First release.
+
+Features
+--------
+
+* Define ``audio`` directive and role.
