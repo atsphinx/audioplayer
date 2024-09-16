@@ -21,11 +21,11 @@ jobs:
       - name: Run document
         run: |
           uv sync --frozen
-          uv run make -C docs dirhtml
+          uv run make -C docs mini18n-dirhtml
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/_build/dirhtml
+          path: docs/_build/mini18n-dirhtml
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
