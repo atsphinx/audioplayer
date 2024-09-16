@@ -10,11 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure env
+      - uses: astral-sh/setup-uv@v2
+      - name: Build package
         run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
           uv build
-          ls -l dist
       - uses: actions/upload-artifact@v4
         with:
           name: packages-${{ github.ref_name }}
@@ -63,12 +62,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Configure env
-        run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          uv sync --frozen
+      - uses: astral-sh/setup-uv@v2
       - name: Run document
         run: |
+          uv sync --frozen
           uv run make -C docs dirhtml
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
