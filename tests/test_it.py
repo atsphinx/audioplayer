@@ -25,3 +25,16 @@ def test__domain(app: SphinxTestApp, status: StringIO, warning: StringIO):
     assert soup.audio
     assert soup.audio["src"] == "_images/dummy.mp3"
     assert soup.audio["controls"]
+
+
+@pytest.mark.sphinx("html")
+def test__http_url(app: SphinxTestApp, status: StringIO, warning: StringIO):
+    """Test to pass."""
+    app.build()
+    soup = BeautifulSoup((app.outdir / "http-url.html").read_text(), "html.parser")
+    assert soup.audio
+    assert (
+        soup.audio["src"]
+        == "https://github.com/atsphinx/audioplayer/raw/main/tests/test-root/dummy.mp3"
+    )
+    assert soup.audio["controls"]
