@@ -7,7 +7,7 @@ Register directive to render audio element
 Getting started
 ===============
 
-.. code: console
+.. code:: console
 
    pip install atsphinx-audioplayer
 
