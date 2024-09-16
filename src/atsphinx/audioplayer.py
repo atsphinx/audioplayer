@@ -7,6 +7,7 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
 from sphinx.directives import SphinxDirective
+from sphinx.util.docutils import SphinxRole
 from sphinx.writers.html5 import HTML5Translator
 
 __version__ = "0.0.0"
@@ -29,6 +30,16 @@ class AudioDirective(SphinxDirective):  # noqa: D101
         return [
             node,
         ]
+
+
+class AudioRole(SphinxRole):  # noqa: D101
+    def run(self):  # noqa: D102
+        options = {
+            "uri": directives.uri(self.text),
+            "controls": True,
+        }
+        node = audio(**options)
+        return [node], []
 
 
 def visit_audio(self: HTML5Translator, node: audio):  # noqa: D103
@@ -55,6 +66,7 @@ def depart_audio(self: HTML5Translator, node: audio):  # noqa: D103
 def setup(app: Sphinx):  # noqa: D103
     app.add_node(audio, html=(visit_audio, depart_audio))
     app.add_directive("audio", AudioDirective)
+    app.add_role("audio", AudioRole())
     return {
         "version": __version__,
         "env_version": 1,
