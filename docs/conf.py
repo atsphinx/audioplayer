@@ -52,6 +52,7 @@ intersphinx_mapping = {
 mini18n_default_language = "en"
 mini18n_support_languages = ["en", "ja"]
 mini18n_select_lang_label = ""
+mini18n_basepath = "/audioplayer/"
 
 
 def setup(app):
