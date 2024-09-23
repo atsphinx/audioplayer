@@ -30,6 +30,7 @@ dependencies = [
 
 [project.urls]
 Home = "https://github.com/atsphinx/audioplayer"
+Documentation = "https://atsphinx.github.io/audioplayer/"
 
 [build-system]
 requires = ["hatchling"]
