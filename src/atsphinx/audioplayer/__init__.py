@@ -11,6 +11,8 @@ __version__ = "0.0.0"
 
 
 class DataPrefixOptions(dict):
+    """Specs-def for accept any ``data-`` prefixed options."""
+
     def __getitem__(self, key):
         """Extend dict for custom plugins of revealjs.
 

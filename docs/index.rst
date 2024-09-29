@@ -51,6 +51,31 @@ Directive style
 
 .. audio:: description.mp3
 
+.. only:: revealjs or dirrevealjs
+
+   .. revealjs-break::
+
+   You can set ``data-autoplay`` options when building as revealjs.
+
+   .. tab-set-code::
+
+      .. code-block:: rst
+
+         .. audio:: example.mp3
+            :no-controls:
+            :data-autoplay:
+
+      .. code-block:: md
+
+         ```{audio} example.mp3
+         :no-controls:
+         :data-autoplay:
+         ```
+
+   .. audio:: description.mp3
+      :no-controls:
+      :data-autoplay:
+
 Role style
 ----------
 
