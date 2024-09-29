@@ -2,6 +2,16 @@
 Change logs
 ===========
 
+v0.2.0
+======
+
+:Date: 2024-09-29 (JST)
+
+Features
+--------
+
+* Support `data-` prefixed options. These passes values unchanged into html builder.
+
 v0.1.1
 ======
 
