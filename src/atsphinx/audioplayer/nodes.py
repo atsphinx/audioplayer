@@ -11,14 +11,14 @@ class audio(nodes.image):  # noqa: D101
 
 
 def visit_audio(self: HTML5Translator, node: audio):  # noqa: D103
-    attributes = {}
+    attributes = node["data"]
     # Resolve audio file uri
     uri = node["uri"]
     if uri in self.builder.images:
         node["uri"] = Path(self.builder.imgpath) / quote(self.builder.images[uri])
     attributes["src"] = node["uri"]
     # Set boolean attributes
-    if "controls" in node:
+    if node["controls"]:
         attributes["controls"] = "controls"
     # Set starttag
     element = ""

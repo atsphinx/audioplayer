@@ -10,16 +10,35 @@ from . import nodes
 __version__ = "0.0.0"
 
 
+class DataPrefixOptions(dict):
+    def __getitem__(self, key):
+        """Extend dict for custom plugins of revealjs.
+
+        Many plugins may refer ``data-`` attributes
+        of ``section`` elements as optional behaviors.
+        """
+        if key in self:
+            return super().__getitem__(key)
+        if key.startswith("data-"):
+            return directives.unchanged
+        return None
+
+
 class AudioDirective(SphinxDirective):  # noqa: D101
     required_arguments = 1
-    option_spec = {
-        "no-controls": directives.flag,
-    }
+    option_spec = DataPrefixOptions(
+        **{
+            "no-controls": directives.flag,
+        }
+    )
 
     def run(self):  # noqa: D102
         attributes = {
             "uri": directives.uri(self.arguments[0]),
-            "controls": self.options.get("no-controls", False),
+            "controls": "no-controls" not in self.options,
+            "data": {
+                k: v or k for k, v in self.options.items() if k.startswith("data-")
+            },
         }
         node = nodes.audio(**attributes)
         return [
@@ -32,6 +51,7 @@ class AudioRole(SphinxRole):  # noqa: D101
         options = {
             "uri": directives.uri(self.text),
             "controls": True,
+            "data": {},
         }
         node = nodes.audio(**options)
         return [node], []
