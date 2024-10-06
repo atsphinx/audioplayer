@@ -54,10 +54,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v2
+      - uses: arduino/setup-task@v2
       - name: Run tests
         run: |
-          uv sync --frozen
-          uv run make -C docs linkcheck dirhtml
+          task setup docs:build-linkcheck docs:build-dirhtml
   build-test:
     runs-on: ubuntu-latest
     steps:
