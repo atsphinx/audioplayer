@@ -38,3 +38,14 @@ def test__http_url(app: SphinxTestApp, status: StringIO, warning: StringIO):
         == "https://github.com/atsphinx/audioplayer/raw/main/tests/test-root/dummy.mp3"
     )
     assert soup.audio["controls"]
+
+
+@pytest.mark.sphinx("html")
+def test__figure_directive(app: SphinxTestApp):
+    """Test to pass."""
+    app.build()
+    soup = BeautifulSoup((app.outdir / "use-figure.html").read_text(), "html.parser")
+    assert soup.audio
+    assert soup.audio["src"] == "_images/dummy.mp3"
+    assert soup.audio["controls"]
+    assert soup.audio.parent.name == "figure"

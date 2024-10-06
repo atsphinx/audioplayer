@@ -48,6 +48,18 @@ class AudioDirective(SphinxDirective):  # noqa: D101
         ]
 
 
+class AudioWithFigureDirective(AudioDirective):  # noqa: D101
+    def run(self):  # noqa: D102
+        from docutils.nodes import figure
+
+        nodes_ = super().run()
+        parent = figure()
+        parent.append(nodes_[0])
+        return [
+            parent,
+        ]
+
+
 class AudioRole(SphinxRole):  # noqa: D101
     def run(self):  # noqa: D102
         options = {
@@ -62,6 +74,7 @@ class AudioRole(SphinxRole):  # noqa: D101
 def setup(app: Sphinx):  # noqa: D103
     app.add_node(nodes.audio, html=(nodes.visit_audio, nodes.depart_audio))
     app.add_directive("audio", AudioDirective)
+    app.add_directive("audio:figure", AudioWithFigureDirective)
     app.add_role("audio", AudioRole())
     return {
         "version": __version__,
