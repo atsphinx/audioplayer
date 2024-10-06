@@ -3,6 +3,7 @@ version: '3'
 vars:
   # If you run bare environment or activated venv, set '' (blank string)
   # RUN_PYTHON: ''
+  SPHINX_DEFAULT_BUILD: 'mini18n-dirhtml'
   SPHINX_OPTIONS: ''
   SPHINX_LANGUAGES:
     - 'ja'
@@ -32,7 +33,7 @@ tasks:
   build:
     desc: 'Make docs (default target)'
     deps:
-      - 'build-mini18n-dirhtml'
+      - 'build-{{.SPHINX_DEFAULT_BUILD}}'
   help:
     desc: 'Display help of docs'
     deps:
