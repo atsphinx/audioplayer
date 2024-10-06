@@ -6,7 +6,6 @@ vars:
   SPHINX_OPTIONS: ''
   SPHINX_LANGUAGES:
     - 'ja'
-    - 'de'
 
 env:
   SPHINXINTL_TRANSLATOR: "Kazuya Takei <myself@attakei.net>"
