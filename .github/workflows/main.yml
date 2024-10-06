@@ -57,7 +57,7 @@ jobs:
       - uses: arduino/setup-task@v2
       - name: Run tests
         run: |
-          task setup docs:build:linkcheck docs:build:dirhtml
+          task setup docs:build-linkcheck docs:build-dirhtml
   build-test:
     runs-on: ubuntu-latest
     steps:
