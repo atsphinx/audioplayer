@@ -9,6 +9,22 @@ tasks:
     desc: 'Setup workspace'
     cmds:
       - 'uv sync --frozen'
+  test:
+    desc: 'Test environment'
+    cmds:
+      - '{{.RUN_PYTHON}} pre-commit run --all-files'
+      - '{{.RUN_PYTHON}} pytest'
+      - task: 'docs:intl'
+      - task: 'docs:build-linkcheck'
+      - task: 'docs:build-mini18n-dirhtml'
+      - 'uv build'
+  release-*:
+    desc: 'Run elease process'
+    vars:
+      LEVEL: '{{index .MATCH 0}}'
+    cmds:
+      - 'age {{.LEVEL}}'
+      - 'uv sync'  # To write out as lock-file
 
 includes:
   docs: './docs'
