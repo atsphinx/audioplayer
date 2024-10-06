@@ -1,0 +1,48 @@
+version: '3'
+
+vars:
+  # If you run bare environment or activated venv, set '' (blank string)
+  RUN_PYTHON: 'uv run'
+  SPHINX_OPTIONS: ''
+  SPHINX_LANGUAGES:
+    - 'ja'
+    - 'de'
+
+env:
+  SPHINXINTL_TRANSLATOR: "Kazuya Takei <myself@attakei.net>"
+
+tasks:
+  setup:
+    desc: 'Setup workspace'
+    cmds:
+      - 'uv sync --frozen'
+  docs:intl:
+    desc: 'Sync i18n environment'
+    dir: 'docs'
+    cmds:
+      - '{{.RUN_PYTHON}} sphinx-build -M gettext . _build {{.SPHINX_OPTIONS}}'
+      - '{{.RUN_PYTHON}} sphinx-intl update --language={{.SPHINX_LANGUAGES | join ","}}'
+  docs:dev:
+    desc: 'Run docs server'
+    dir: 'docs'
+    cmds:
+      - '{{.RUN_PYTHON}} sphinx-autobuild -b dirhtml . _build/dirhtml'
+  docs:build:*:
+    desc: 'Make docs'
+    vars:
+      TARGET: '{{index .MATCH 0}}'
+    dir: 'docs'
+    cmds:
+      - '{{.RUN_PYTHON}} sphinx-build -M {{.TARGET}} . _build'
+  docs:build:
+    desc: 'Make docs (default target)'
+    deps:
+      - 'docs:build:mini18n-dirhtml'
+  docs:help:
+    desc: 'Display help of docs'
+    deps:
+      - 'docs:build:help'
+  docs:clean:
+    desc: 'Clean build files of docs'
+    deps:
+      - 'docs:build:clean'

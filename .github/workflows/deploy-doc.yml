@@ -18,10 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v2
-      - name: Run document
+      - uses: arduino/setup-task@v2
+      - name: Build document
         run: |
-          uv sync --frozen
-          uv run make -C docs mini18n-dirhtml
+          task setup docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
