@@ -13,3 +13,4 @@ registries:
 packages:
   - name: evilmartians/lefthook@v2.0.3
   - name: astral-sh/uv@0.9.8
+  - name: go-task/task@v3.45.4
