@@ -9,7 +9,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '0 9 * * 5'  # 18:00 on Friday JST
+    - cron: '0 9 * * 5' # 18:00 on Friday JST
 
 jobs:
   lint:
@@ -20,7 +20,7 @@ jobs:
       - name: Lint by pre-commit
         run: |
           uv sync --frozen --all-extras
-          uvx pre-commit run --all-files
+          uvx lefthook run --all-files
   source-test:
     runs-on: ubuntu-latest
     strategy:

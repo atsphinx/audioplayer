@@ -9,10 +9,11 @@ tasks:
     desc: 'Setup workspace'
     cmds:
       - 'uv sync --frozen'
+      - 'lefthook install'
   test:
     desc: 'Test environment'
     cmds:
-      - '{{.RUN_PYTHON}} pre-commit run --all-files'
+      - 'lefthook run pre-commit --all-files'
       - '{{.RUN_PYTHON}} pytest'
       - task: 'docs:intl'
       - task: 'docs:build-linkcheck'
@@ -24,7 +25,7 @@ tasks:
       LEVEL: '{{index .MATCH 0}}'
     cmds:
       - 'age {{.LEVEL}}'
-      - 'uv sync'  # To write out as lock-file
+      - 'uv sync' # To write out as lock-file
 
 includes:
   docs: './docs'
