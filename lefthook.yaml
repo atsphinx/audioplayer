@@ -1,0 +1,22 @@
+# Important!
+#   This hooks require uv to
+
+pre-commit:
+  parallel: true
+  commands:
+    ruff:
+      glob: '*.py'
+      run: 'uvx ruff format {staged_files}'
+      stage_fixed: true
+    mypy:
+      glob: '*.py'
+      exclude:
+        - '**/conf.py'
+      run: 'uv run mypy {staged_files}'
+    doc8:
+      glob: '*.rst'
+      run: 'uvx doc8 --max-line-length=119 {staged_files}'
+    biomejs:
+      glob: '*.ts'
+      run: 'biome check --fix {staged_files}'
+      stage_fixed: true
