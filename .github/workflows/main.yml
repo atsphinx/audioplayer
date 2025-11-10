@@ -11,16 +11,19 @@ on:
   schedule:
     - cron: '0 9 * * 5' # 18:00 on Friday JST
 
+env:
+  TASK_X_REMOTE_TASKFILES: 1
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v2
+      - uses: './.github/actions/setup-aqua'
       - name: Lint by lefthook
         run: |
           uv sync --frozen --all-extras
-          uvx lefthook run pre-commit --all-files
+          lefthook run pre-commit --all-files
   source-test:
     runs-on: ubuntu-latest
     strategy:
@@ -33,8 +36,7 @@ jobs:
         workspace: ['locked', 'latest']
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v2
-      - uses: actions/setup-python@v5
+      - uses: './.github/actions/setup-aqua'
         id: 'setup-python'
         with:
           python-version: ${{ matrix.python-version }}
@@ -53,16 +55,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v2
-      - uses: arduino/setup-task@v2
+      - uses: './.github/actions/setup-aqua'
       - name: Run tests
         run: |
-          task setup docs:build-linkcheck docs:build-dirhtml
+          task --yes setup docs:build-linkcheck docs:build-dirhtml
   build-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v2
+      - uses: './.github/actions/setup-aqua'
       - name: Build package
         run: |
           uv build
