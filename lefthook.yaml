@@ -12,7 +12,7 @@ pre-commit:
       glob: '*.py'
       exclude:
         - '**/conf.py'
-      run: 'uv run mypy {staged_files}'
+      run: 'uvx run mypy {staged_files}'
     doc8:
       glob: '*.rst'
       run: 'uvx doc8 --max-line-length=119 {staged_files}'
