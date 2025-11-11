@@ -1,3 +1,3 @@
-Release atsphinx-audioplayer v0.0.0
+Release atsphinx-audioplayer v0.2.1
 
-- Changelog is https://github.com/atsphinx/audioplayer/blob/v0.0.0/CHANGES.rst
+- Changelog is https://github.com/atsphinx/audioplayer/blob/v0.2.1/CHANGES.rst

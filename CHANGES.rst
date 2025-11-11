@@ -2,6 +2,21 @@
 Change logs
 ===========
 
+v0.2.1
+======
+
+:Date: 2025-11-11 (Asia/Tokyo)
+
+Fixes
+-----
+
+- Add type stub by `@adamtheturtle <https://github.com/adamtheturtle>`_
+
+Others
+------
+
+- Update development workspace to adjust for other atsphinx project.
+
 v0.2.0
 ======
 
