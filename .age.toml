@@ -13,7 +13,6 @@ path = "src/atsphinx/audioplayer/__init__.py"
 search = "version = \"{{current_version}}\""
 replace = "version = \"{{new_version}}\""
 
-
 [[files]]
 path = "CHANGES.rst"
 
@@ -26,9 +25,9 @@ Change logs
 ===========
 
 v{{new_version}}
-={% for _ in new_version %}={% endfor %}
+{{#sameLengthChars}}=@v{{new_version}}{{/sameLengthChars}}
 
-:Date: {{ now|date }} (JST)
+:Date: {{ nowFormat.dateISO }} (Asia/Tokyo)
 
 Breaking changes
 ----------------
@@ -42,4 +41,3 @@ Fixes
 Others
 ------
 """
-
